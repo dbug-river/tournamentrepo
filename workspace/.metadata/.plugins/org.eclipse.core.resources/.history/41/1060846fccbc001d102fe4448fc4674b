@@ -1,0 +1,29 @@
+package com.rivertech.model;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+public class Timeslot {
+	
+	private LocalDateTime TimeslotStart;
+	private LocalDateTime TimeslotEnd;
+	private List<Game> games;
+		
+	public Timeslot(LocalDateTime timeslotStart, LocalDateTime timeslotEnd, List<Game> games) {
+		TimeslotStart = timeslotStart;
+		TimeslotEnd = timeslotEnd;
+		this.games = games;
+	}
+
+	public List<Game> getGames() {
+		return games;
+	}
+
+	public LocalDateTime getTimeslotEnd() {
+		return TimeslotEnd;
+	}
+
+	public LocalDateTime getTimeslotStart() {
+		return TimeslotStart;
+	}
+}

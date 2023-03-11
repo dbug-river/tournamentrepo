@@ -1,0 +1,23 @@
+package com.rivertech.model;
+
+@PlanningEntity
+public class Session {
+	
+    @PlanningId
+    private Long id;
+	
+    @PlanningVariable(valueRangeProviderRefs = "round")
+	private Round round;
+	
+    @PlanningVariable(valueRangeProviderRefs = "timeslot")
+	private Timeslot slot;
+	
+	
+	public Session(Round round, Timeslot slot) {
+		super();
+		this.round = round;
+		this.slot = slot;
+	}
+	
+	
+}

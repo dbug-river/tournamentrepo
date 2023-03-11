@@ -1,0 +1,63 @@
+package com.rivertech.services;
+
+import java.util.List;
+
+import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
+import org.optaplanner.core.api.score.calculator.EasyScoreCalculator;
+
+import com.rivertech.model.Schedule;
+import com.rivertech.model.Session;
+
+public class ScheduleScoreCalculator implements EasyScoreCalculator<Schedule, HardSoftScore> {
+
+	
+    public ScheduleScoreCalculator() {
+        // initialize any necessary fields here
+    }
+	
+	@Override
+	public HardSoftScore calculateScore(Schedule solution) {
+		
+		List<Session> sessionList = solution.getSessionList();
+        
+		int hardScore = 0;
+        for (Session a : sessionList) {
+            for (Session b : sessionList) {
+                if (a.getTimeslot() != null && a.getTimeslot().equals(b.getTimeslot())
+                        && a.getId() < b.getId()) {
+                    // A room can accommodate at most one session at the same time.
+                    if (a.getRoom() != null && a.getRoom().equals(b.getRoom())) {
+                        hardScore--;
+                    }
+                    
+                    // A game cannot be played at the same time
+                    if(a.getRound().getGame().getGameId() == b.getRound().getGame().getGameId()) {
+                    	hardScore--;
+                    }
+                    
+                    // A user cannot play a game at the same time
+                    String[] aUsers = a.getRound().getUsers();
+                    String[] bUsers = b.getRound().getUsers();
+                    boolean exists = false;
+                    
+                    for(int i = 0; i < aUsers.length; i++ ) {
+                        for(int j = 0; j < bUsers.length; j++) {
+                           if(aUsers[i]==bUsers[j]) {
+                              exists = true;
+                              hardScore --;
+                              break;                              
+                           }
+                        }
+                        if(exists)
+                        	break;
+                     }
+                }
+            }
+        }
+        
+        int softScore = 0;
+        
+        return HardSoftScore.of(hardScore, softScore);
+	}
+
+}

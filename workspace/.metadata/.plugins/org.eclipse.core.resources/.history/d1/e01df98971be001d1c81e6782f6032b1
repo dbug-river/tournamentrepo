@@ -1,0 +1,55 @@
+package com.rivertech.model;
+
+import org.optaplanner.core.api.domain.entity.PlanningEntity;
+import org.optaplanner.core.api.domain.lookup.PlanningId;
+import org.optaplanner.core.api.domain.variable.PlanningVariable;
+
+@PlanningEntity
+public class Session {
+
+    @PlanningId
+    private Long id;
+
+
+    @PlanningVariable(valueRangeProviderRefs = "timeslotRange")
+    private Timeslot timeslot;
+    
+    @PlanningVariable(valueRangeProviderRefs = "roomRange")
+    private Room room;
+    
+    private Round round;
+
+    public Session() {
+    }
+
+    public Session(Long id, Round round) {
+        this.id = id;
+        this.round = round;
+    }
+
+    public Long getId() {
+        return id;
+    }
+    
+    public Round getRound() {
+        return timeslot;
+    }
+
+    public Timeslot getTimeslot() {
+        return timeslot;
+    }
+
+    public void setTimeslot(Timeslot timeslot) {
+        this.timeslot = timeslot;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
+   
+}

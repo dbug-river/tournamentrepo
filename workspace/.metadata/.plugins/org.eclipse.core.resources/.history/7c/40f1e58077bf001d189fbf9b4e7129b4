@@ -1,0 +1,57 @@
+package com.rivertech.model;
+
+import java.time.LocalDateTime;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+public class Slot {
+
+	/* Slot start date */
+	private LocalDateTime start;
+	
+	/* Slot end date */
+	private LocalDateTime end;
+	
+	private Round[] rounds = new Round[2];
+
+	public Round getOne() {
+		return rounds[0];
+	}
+
+	public void setOne(Round one) {
+		this.rounds[0] = one;
+	}
+
+	public Round getTwo() {
+		return rounds[1];
+	}
+
+	public void setTwo(Round two) {
+		this.rounds[1] = two;
+	}
+
+	@JsonProperty("timeslot_start")
+	public LocalDateTime getStart() {
+		return start;
+	}
+
+	public void setStart(LocalDateTime start) {
+		this.start = start;
+	}
+
+	@JsonProperty("timeslot_end")
+	public LocalDateTime getEnd() {
+		return end;
+	}
+
+	public void setEnd(LocalDateTime end) {
+		this.end = end;
+	}
+	
+	@Override
+	public String toString() {
+		return "Slot: \n" + this.getStart() + " - " + this.getEnd() + "\n" + this.getOne() + "\n" + this.getTwo();
+	}
+
+
+}

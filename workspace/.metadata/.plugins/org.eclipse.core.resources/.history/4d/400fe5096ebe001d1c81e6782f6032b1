@@ -1,0 +1,5 @@
+package com.rivertech.model;
+
+public class Session {
+
+}

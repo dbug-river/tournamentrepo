@@ -1,0 +1,24 @@
+package com.rivertech.services;
+
+import java.util.UUID;
+
+import org.optaplanner.core.api.solver.SolverJob;
+
+
+import com.rivertech.model.Schedule;
+
+public class ScheduleService {
+
+	
+    public Schedule solve(Schedule problem) {
+        UUID problemId = UUID.randomUUID();
+        
+     
+
+        // Submit the problem to start solving
+        SolverJob<Schedule, UUID> solverJob = SolverManager.solve(problemId, problem);
+        
+        Schedule solution = solverJob.getFinalBestSolution();    
+        return solution;
+    }
+}

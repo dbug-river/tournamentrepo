@@ -1,0 +1,45 @@
+package com.rivertech.model;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+/***
+ * Class that represent a scheduled timeslot.
+ * @author Omar Zammit
+ *
+ */
+public class Timeslot {
+	
+	/***
+	 * Timeslot starting time.
+	 */
+	private LocalDateTime timeslotStart;
+	
+	/***
+	 * Timeslot end time.
+	 */
+	private LocalDateTime TimeslotEnd;
+	
+	/***
+	 * Games to be played within the timeslot.
+	 */
+	private List<Game> games;
+		
+	public Timeslot(LocalDateTime timeslotStart, LocalDateTime timeslotEnd, List<Game> games) {
+		timeslotStart = timeslotStart;
+		TimeslotEnd = timeslotEnd;
+		this.games = games;
+	}
+
+	public LocalDateTime getTimeslotStart() {
+		return timeslotStart;
+	}
+	
+	public LocalDateTime getTimeslotEnd() {
+		return TimeslotEnd;
+	}
+	
+	public List<Game> getGames() {
+		return games;
+	}
+}

@@ -1,0 +1,23 @@
+package com.rivertech.controller;
+
+import java.util.List;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.rivertech.model.Timeslot;
+import com.rivertech.repositories.TournamentRepository;
+
+@RequestMapping("/api/tournament")
+public class TournamentController {
+	
+	/***
+	 * Get list of schedules from the database.
+	 * @return
+	 */
+	@GetMapping("timeslots")
+    public List<Timeslot> findAllTimeslots() {
+		TournamentRepository repo = new TournamentRepository(null, null, null);
+		return repo.getAllSchedules();	
+    }
+}

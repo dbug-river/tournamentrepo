@@ -1,0 +1,11 @@
+package com.rivertech.model;
+
+public class Game {
+	private int gameId;
+
+	public Game(int gameId) {
+		super();
+		this.gameId = gameId;
+	}
+	
+}

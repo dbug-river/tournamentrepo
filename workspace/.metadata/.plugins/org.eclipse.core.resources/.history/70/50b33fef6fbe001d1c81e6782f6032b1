@@ -1,0 +1,25 @@
+package com.rivertech.model;
+
+import org.optaplanner.core.api.domain.entity.PlanningEntity;
+import org.optaplanner.core.api.domain.lookup.PlanningId;
+import org.optaplanner.core.api.domain.variable.PlanningVariable;
+
+@PlanningEntity
+public class Session {
+	
+    @PlanningId
+    private Long id;
+	
+    @PlanningVariable(valueRangeProviderRefs = "round")
+	private Round round;
+	
+    @PlanningVariable(valueRangeProviderRefs = "timeslot")
+	private Timeslot slot;
+		
+	public Session(Round round, Timeslot slot) {
+		this.round = round;
+		this.slot = slot;
+	}
+	
+	
+}

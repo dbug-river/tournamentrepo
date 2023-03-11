@@ -1,0 +1,40 @@
+package com.rivertech.services;
+
+import java.util.UUID;
+import java.util.concurrent.ExecutionException;
+
+import org.optaplanner.core.api.solver.SolverJob;
+import org.optaplanner.core.api.solver.SolverManager;
+import org.optaplanner.core.config.solver.SolverConfig;
+import org.optaplanner.core.config.solver.SolverManagerConfig;
+
+import com.rivertech.model.Schedule;
+
+public class ScheduleService {
+
+	// https://quarkus.io/guides/optaplanner
+	
+    public Schedule solve(Schedule problem) {
+        UUID problemId = UUID.randomUUID();
+        
+        SolverManager<Schedule, UUID> solverManager = 
+        		SolverManager.create(new SolverConfig(), new SolverManagerConfig());
+
+
+        // Submit the problem to start solving
+        SolverJob<Schedule, UUID> solverJob = solverManager.solve(problemId, problem);
+        
+        Schedule solution = null;
+        
+		try {
+			solution = solverJob.getFinalBestSolution();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}    
+        return solution;
+    }
+}

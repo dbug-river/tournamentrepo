@@ -1,0 +1,50 @@
+package com.rivertech.services;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+
+import com.rivertech.model.Round;
+
+
+public class Planner {
+	
+	
+	public boolean hasCollision(Round a, Round b) {
+		
+		/* If the round is the same round, return collision */
+		if(a.getId() == b.getId()) {
+			return true;
+		}
+		
+		/* Two games cannot happen at the same time */
+		if(a.getGame().getGameId() == b.getGame().getGameId()) {
+			return true;
+		}
+		
+		/* Users cannot collide with each other */
+		HashSet<String> aSet = new HashSet<String>(Arrays.asList(a.getUsers()));
+		for (String userId : b.getUsers()) {
+            if (aSet.contains(userId)) {
+            	return true;
+            }
+        }
+				
+		return false;
+	}
+	
+	
+	
+
+	public Schedule solve(List<Round> rounds) {
+		
+		/* List of us
+		List<String> fittedRounds = new ArrayList<>();
+		
+		
+		
+		
+	}
+	
+}

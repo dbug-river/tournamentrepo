@@ -1,0 +1,4 @@
+module RivertechLibrary {
+	requires java.sql;
+	requires slf4j.api;
+}

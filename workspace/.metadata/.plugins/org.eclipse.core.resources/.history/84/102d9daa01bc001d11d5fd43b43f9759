@@ -1,0 +1,17 @@
+package com.rivertech.repositories;
+
+
+
+public class DimensionRepository extends Repository {
+
+	public DimensionRepository(String url, String username, String password) {
+		super(url, username, password);
+	}
+	
+	public void FlagStagingForProcess() {
+		String query  =  "";
+		super.Execute(query);
+	}
+
+
+}

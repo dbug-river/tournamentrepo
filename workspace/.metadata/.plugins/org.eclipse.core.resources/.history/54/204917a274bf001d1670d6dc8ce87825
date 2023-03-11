@@ -1,0 +1,40 @@
+package com.rivertech.model;
+
+import java.time.LocalDateTime;
+
+public class Slot {
+
+	/* Slot start date */
+	private LocalDateTime start;
+	
+	/* Slot end date */
+	private LocalDateTime end;
+	
+	/* Round one of slot */
+	private Round one;
+	
+	/* Round two of slot */
+	private Round two;
+
+	public Round getOne() {
+		return one;
+	}
+
+	public void setOne(Round one) {
+		this.one = one;
+	}
+
+	public Round getTwo() {
+		return two;
+	}
+
+	public void setTwo(Round two) {
+		this.two = two;
+	}
+	
+	@Override
+	public String toString() {
+		return "Slot: \n" + this.one + "\n" + this.two;
+	}
+
+}

@@ -1,0 +1,19 @@
+package com.rivertech.repositories;
+
+
+
+public class DimensionRepository extends Repository {
+
+	public DimensionRepository(String url, String username, String password) {
+		super(url, username, password);
+	}
+	
+	public void FlagStagingForProcess() {
+		String query  =  "ALTER TABLE Staging_GameRound UPDATE"
+					   + " dw_status = 0"
+					   + " WHERE dw_status = 1;";
+		super.Execute(query);
+	}
+
+
+}

@@ -1,0 +1,40 @@
+package com.rivertech.console;
+
+import com.rivertech.repositories.DatawarehouseRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class EtlConsole {
+
+	public static void main(String[] args) {
+		String url = "jdbc:clickhouse://127.0.0.1:8123";
+        String username = "default";
+        String password = "omar123";
+        
+        
+        
+		DatawarehouseRepository repo = 
+				new DatawarehouseRepository(url, username, password);
+		
+		System.out.println("Flag staging rows as dw_status = 1");
+		repo.FlagStagingForProcess();
+		
+		System.out.println("Update game dimension");
+		repo.UpdateGameDimension();
+		
+		System.out.println("Update time dimension");
+		repo.UpdateTimeDimension();
+		
+		System.out.println("Update user dimension");
+		repo.UpdateUserDimension();;
+		
+		System.out.println("Update fact table");
+		repo.UpdateFactTable();
+		
+		System.out.println("Flag staging rows as dw_status = 2");
+		repo.FlagStagingProcessed();
+		
+		System.out.println("Ready");
+	}
+
+}

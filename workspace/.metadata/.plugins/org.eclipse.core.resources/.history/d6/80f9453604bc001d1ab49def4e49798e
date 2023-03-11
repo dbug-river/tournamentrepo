@@ -1,0 +1,50 @@
+package com.rivertech.repositories;
+
+
+
+public class DimensionRepository extends Repository {
+
+	public DimensionRepository(String url, String username, String password) {
+		super(url, username, password);
+	}
+	
+	public void FlagStagingForProcess() {
+		String query  =  "ALTER TABLE Staging_GameRound "
+					   + "UPDATE dw_status = 1 "
+					   + "WHERE dw_status = 0; ";
+		super.Execute(query);
+	}
+	
+	public void UpdateGameDimension() {
+		String query  = "INSERT INTO DW_GameDimension "
+						+ "	SELECT "
+						+ "	DISTINCT game_id, "
+						+ "			 game_name, "
+						+ "			 provider "
+						+ "	FROM "
+						+ "		Staging_GameRound "
+						+ "	WHERE "
+						+ "		dw_status = 1;";
+		super.Execute(query);
+		super.Execute("OPTIMIZE TABLE DW_GameDimension");
+	}
+
+	public void UpdateTimeDimension() {
+		String query  = "INSERT INTO DW_TimeDimension\n"
+						+ "	SELECT "
+						+ "		generateUUIDv4() AS id,"
+						+ "		timestamp_value,"
+						+ "		DAY(timestamp_value) AS day,"
+						+ "		MONTH(timestamp_value) AS month,"
+						+ "		YEAR(timestamp_value) AS year,"
+						+ "		HOUR(timestamp_value) AS hour"
+						+ "	FROM "
+						+ "	(SELECT"
+						+ "	 DISTINCT CAST(created_timestamp AS DATE) AS d_day,"
+						+ "	 arrayJoin(arrayMap(x -> toDateTime(x), range(toUInt32(toStartOfDay(d_day)), toUInt32(toStartOfDay(d_day+1)), 3600))) AS timestamp_value"
+						+ "	FROM Staging_GameRound WHERE dw_status = 1);";
+		super.Execute(query);
+		super.Execute("OPTIMIZE TABLE DW_TimeDimension");
+	}
+
+}

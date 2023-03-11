@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+  app:
+    image: openjdk:11-jre-slim
+    container_name: tournament
+    ports:
+      - "9090:9090"
+    volumes:
+      - /home/omar/source/workspace/TournametScheduler/TournametScheduler-0.0.1-SNAPSHOT.jar
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+      - SPRING_DATASOURCE_URL=jdbc:clickhouse://127.0.0.1:8123
+      - SPRING_DATASOURCE_USERNAME=default
+      - SPRING_DATASOURCE_PASSWORD=omar123
+    command: ["java", "-jar", "/home/omar/source/workspace/TournametScheduler/TournametScheduler-0.0.1-SNAPSHOT.jar"]
+  

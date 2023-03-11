@@ -1,0 +1,10 @@
+/**
+ * 
+ */
+/**
+ * @author omar
+ *
+ */
+module RivertechLibrary {
+	requires java.sql;
+}

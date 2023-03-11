@@ -1,0 +1,44 @@
+package com.rivertech.model;
+
+import java.util.Arrays;
+
+/**
+ * A class that represents a tournament session.
+ * @author Omar Zammit
+ *
+ */
+public class Round {
+	
+	/***
+	 * The game that will be played during the session.
+	 */
+	private Game game;
+	
+	/***
+	 * The users that will play the tournament session.
+	 */
+	private String[] users;
+	
+	public Round(Game game, String[] users) {
+		super();
+		this.game = game;
+		
+		Arrays.sort(users);
+		this.users = users;
+	}
+
+	public Game getGame() {
+		return game;
+	}
+
+	public String[] getUsers() {
+		return users;
+	}
+	
+	@Override
+	public String toString() {
+		return "Game ID: " + getGame().getGameId() +
+				" Users: " + String.join(",", getUsers());
+	}
+
+}

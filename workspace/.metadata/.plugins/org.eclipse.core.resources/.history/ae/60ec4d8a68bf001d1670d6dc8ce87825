@@ -1,0 +1,48 @@
+package com.rivertech.model;
+
+
+public class Session {
+
+    private Long id;
+
+    public Timeslot timeslot;
+    
+    public Room room;
+    
+    private Round round;
+
+    public Session(Long id, Round round) {
+        this.id = id;
+        this.round = round;
+    }
+
+    public Long getId() {
+        return id;
+    }
+    
+    public Round getRound() {
+        return round;
+    }
+    
+    public void setRound(Round round) {
+    	this.round = round;
+    }
+
+    public Timeslot getTimeslot() {
+        return timeslot;
+    }
+
+    public void setTimeslot(Timeslot timeslot) {
+        this.timeslot = timeslot;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
+   
+}

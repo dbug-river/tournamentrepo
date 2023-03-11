@@ -1,0 +1,23 @@
+package com.rivertech.model;
+
+/***
+ * Class that represent a game instance.
+ */
+public class Game {
+	
+	/***
+	 * The game unique ID.
+	 */
+	public int gameId;
+	
+	/***
+	 * The game name.
+	 */
+	public String gameName;
+		
+	/***
+	 * The game provider name.
+	 */
+	public String provider;
+	
+}

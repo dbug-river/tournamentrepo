@@ -1,0 +1,41 @@
+1678095206247	Rename type 'main'
+1678096475076	Rename type 'DimensionRepository'
+1678096488755	Rename type 'Repository'
+1678096582529	Delete element
+1678096670477	Rename type 'Console'
+1678099065986	Rename method 'Execute'
+1678180419880	Copy compilation unit
+1678180750800	Copy compilation unit
+1678182786673	Move compilation units
+1678182794124	Delete element
+1678183107746	Move file
+1678185063944	Rename type 'Game'
+1678187771623	Rename method 'getAllSchedules'
+1678188579602	Delete elements
+1678188620399	Rename type 'EtlConsole'
+1678197637309	Copy compilation unit
+1678360202474	Delete element
+1678360328161	Delete element
+1678360749873	Delete element
+1678360890738	Rename type 'TournamentSession'
+1678361029881	Encapsulate field 'gameId'
+1678361040578	Encapsulate field 'gameName'
+1678361070801	Encapsulate field 'provider'
+1678361166672	Encapsulate field 'game'
+1678361173869	Encapsulate field 'users'
+1678362232505	Delete element
+1678362337985	Delete element
+1678362348298	Delete element
+1678362361015	Delete element
+1678366645039	Encapsulate field 'id'
+1678464440585	Delete elements
+1678469075420	Delete element
+1678469123632	Delete element
+1678469129404	Delete element
+1678469583118	Encapsulate field 'one'
+1678469588591	Encapsulate field 'two'
+1678469659374	Delete element
+1678469881602	Encapsulate field 'id'
+1678474317497	Encapsulate field 'start'
+1678474321219	Encapsulate field 'end'
+1678474868680	Delete element

@@ -1,0 +1,41 @@
+package com.rivertech.model;
+
+import java.util.List;
+
+
+
+
+public class Schedule {
+
+    private List<Timeslot> timeslotList;
+    
+    private List<Room> roomList;
+    
+    public void setRoomList(List<Room> roomList) {
+		this.roomList = roomList;
+	}
+
+    private List<Session> sessionList;
+
+    public Schedule() {
+    }
+
+    public Schedule(List<Timeslot> timeslotList, List<Room> roomList, List<Session> lessonList) {
+        this.timeslotList = timeslotList;
+        this.roomList = roomList;
+        this.sessionList = lessonList;
+    }
+
+    public List<Timeslot> getTimeslotList() {
+        return timeslotList;
+    }
+
+    public List<Room> getRoomList() {
+        return roomList;
+    }
+
+    public List<Session> getSessionList() {
+        return sessionList;
+    }
+
+}
