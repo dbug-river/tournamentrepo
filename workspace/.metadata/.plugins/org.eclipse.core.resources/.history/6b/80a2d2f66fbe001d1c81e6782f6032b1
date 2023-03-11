@@ -1,6 +1,0 @@
-package com.rivertech.model;
-
-@PlanningSolution
-public class Schedule {
-
-}

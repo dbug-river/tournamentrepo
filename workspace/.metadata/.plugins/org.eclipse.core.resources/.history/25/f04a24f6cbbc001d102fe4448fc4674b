@@ -1,9 +1,0 @@
-package com.rivertech.model;
-
-import java.time.LocalDateTime;
-
-public class Timeslot {
-	private LocalDateTime TimeslotStart;
-	private LocalDateTime TimeslotEnd;
-	
-}

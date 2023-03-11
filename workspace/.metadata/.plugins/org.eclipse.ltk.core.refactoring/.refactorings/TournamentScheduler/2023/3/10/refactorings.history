@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename type &apos;com.rivertech.repository.IRepository&apos; to &apos;IUserRepository&apos;&#x0A;- Original project: &apos;TournamentScheduler&apos;&#x0A;- Original element: &apos;com.rivertech.repository.IRepository&apos;&#x0A;- Renamed element: &apos;com.rivertech.repository.IUserRepository&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;IRepository&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.rivertech.repository{IRepository.java[IRepository" matchStrategy="1" name="IUserRepository" qualified="false" references="true" similarDeclarations="false" stamp="1678177841381" textual="false" version="1.0"/>
-</session>

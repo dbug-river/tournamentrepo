@@ -1,9 +1,0 @@
-package com.rivertech.repository;
-
-public interface IRepository<T> {
-	  
-    public void save(T t);
-  
-    public T find(String id);
-  
-}
