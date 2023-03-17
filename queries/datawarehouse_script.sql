@@ -3,7 +3,7 @@ CREATE TABLE default.DW_UserDimension
 (
     user_id VARCHAR(100)
 )
-ENGINE = AggregatingMergeTree()
+ENGINE = AggregatingMergeTree() --why are you using aggregate merge tree? replacing merge tree would be suitable for here
 PRIMARY KEY (user_id)
 ORDER BY (user_id);
 
@@ -17,7 +17,7 @@ CREATE TABLE default.DW_TimeDimension
     year UInt16,
     hour UInt16
 )
-ENGINE = AggregatingMergeTree()
+ENGINE = AggregatingMergeTree() --why are you using aggregate merge tree? replacing merge tree would be suitable for here
 ORDER BY ( timestamp_value, day, month, year, hour);
 
 -- Create game dimension table.
@@ -27,7 +27,7 @@ CREATE TABLE default.DW_GameDimension
     game_name VARCHAR(100),
     provider VARCHAR(100)
 )
-ENGINE = AggregatingMergeTree()
+ENGINE = AggregatingMergeTree() --why are you using aggregate merge tree? replacing merge tree would be suitable for here
 PRIMARY KEY (game_id)
 ORDER BY (game_id);
 
@@ -43,6 +43,6 @@ CREATE TABLE default.DW_FactTable
     real_amount_win Decimal(10, 2),
     bonus_amount_win Decimal(10, 2)
 )
-ENGINE = AggregatingMergeTree()
+ENGINE = AggregatingMergeTree() --aggregating merge tree makes sense but you are not using any functions
 PRIMARY KEY (created_timestamp_id, game_instance_id, user_id, game_id)
 ORDER BY (created_timestamp_id, game_instance_id, user_id, game_id);

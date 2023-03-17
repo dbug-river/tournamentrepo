@@ -48,7 +48,7 @@ public class Planner {
 			}
 		}
 
-		return false;
+		return false; 	//for all the game combinations, the collision never returns false.
 	}
 
 	/***
@@ -119,6 +119,9 @@ public class Planner {
 
 		List<Slot> slots = new ArrayList<>();
 
+		//The slot should be a list of sets -> 9am [game_id_1 + rounds, game_id_2 + rounds]
+
+
 		/* Loop through each combination and create a fit */
 		for (int i = 0; i < rounds.size(); i++) {
 			Collections.swap(rounds, 0, i);
@@ -126,7 +129,7 @@ public class Planner {
 			slots = fit(rounds);
 			logger.fine("Planner fit iteration " + i + " has " + slots.size() + "slots.");
 			if (slots.size() <= maxSlots)
-				break;
+				break;	//this will never break in this case
 		}
 
 		/* Set the time slot start and end time */
