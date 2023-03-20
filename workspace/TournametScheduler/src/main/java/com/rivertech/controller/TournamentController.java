@@ -35,12 +35,13 @@ public class TournamentController {
 	/* Environment variable to access the application properties */
 	@Autowired
 	private Environment env;
-	
+
 	
 	/***
 	 * Get scheduled games using the custom planner class.
 	 * @return A list of slots containing details about the game and the time slots.
 	 */
+	//just FYI: this is not typical REST URL
 	@GetMapping("/getSchedules")
     public ResponseEntity<List<Slot>> getTournamentSchedules() {
 		
@@ -67,7 +68,9 @@ public class TournamentController {
 			/* Create a planner class with 8 slots and a start date */
 			Planner planner = new Planner();
 			tournamentSession= planner.solve(rounds, 8, startDateTime);
-			
+
+			//The response from the method does not show two games per slot from 9-5pm (8 hours) but it shows 1 game per slot from 9-1am (16 hours)
+
 			/* Return not found error if game ID does not exist */
 			if(tournamentSession.isEmpty())
 				status = HttpStatus.NOT_FOUND;

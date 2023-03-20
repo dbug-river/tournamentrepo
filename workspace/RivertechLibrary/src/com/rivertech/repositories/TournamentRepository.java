@@ -178,7 +178,28 @@ public class TournamentRepository extends AbstractRepository {
 						bet_amount DESC
 					LIMIT ?
 					""";
-			logger.fine(query);
+
+			//This query will return bet_amounts grouped by user_id and game_id
+
+			// If you want to get the game with the most bet_amounts you would have to do :
+			//			SELECT
+			//					game_id,
+			//					game_name,
+			//					provider
+			//			FROM
+			//			VW_UserRankings vur
+			//			ORDER BY
+			//			sum(bet_amount) DESC
+			//			LIMIT ?
+
+			// In fact, you can do it on the game rounds table directly.
+
+			//			select sum(bonus_amount_bet) as b, sum(real_amount_bet) as r, b + r, game_id, game_name
+			//			from Staging_GameRound
+			//			group by game_id, game_name
+			//			order by b + r desc
+
+					logger.fine(query);
 			/* Execute query */
 			PreparedStatement ps = connection.prepareStatement(query);
 			ps.setInt(1, total);
@@ -225,6 +246,26 @@ public class TournamentRepository extends AbstractRepository {
 					LIMIT ?
 					""";
 			logger.fine(query);
+
+			//This query will return bet_counts grouped by user_id and game_id
+
+			// If you want to get the game with the most bet_amounts you would have to do :
+			//			SELECT
+			//					game_id,
+			//					game_name,
+			//					provider
+			//			FROM
+			//			VW_UserRankings vur
+			//			ORDER BY
+			//			sum(rounds) DESC
+			//			LIMIT ?
+
+			// In fact, you can do it on the game rounds table directly.
+
+			//			select count(*), game_id, game_name
+			//			from Staging_GameRound
+			//			group by game_id, game_name
+			//			order by count(*) desc
 
 			/* Execute query */
 			PreparedStatement ps = connection.prepareStatement(query);

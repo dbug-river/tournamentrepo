@@ -64,6 +64,7 @@ public class DatawarehouseRepository extends AbstractRepository {
 				UPDATE dw_status = 1
 				WHERE dw_status = 2;
 				""";
+		//this does not work as when they are processed they are set to dw_status to 1 and not 2
 		logger.fine(query);
 		super.ExecuteUpdate(query);
 	}
@@ -127,13 +128,15 @@ public class DatawarehouseRepository extends AbstractRepository {
 				""";
 		logger.fine(query);
 		super.ExecuteUpdate(query);
-		super.ExecuteUpdate("OPTIMIZE TABLE DW_UserDimension");
+		super.ExecuteUpdate("OPTIMIZE TABLE DW_UserDimension");// what's the reason for optimize table?
 	}
 
 	/***
 	 * Update the fact table data.
 	 */
 	public void UpdateFactTable() {
+		//you are not aggregating data in the fact table
+		//the view aggregates everything at query time, so for all api calls you are calculating the aggregating from starting instead of having a pre aggregated value (in the fact)
 		String query = """
 				INSERT INTO DW_FactTable
 				(		created_timestamp_id,
